@@ -7,9 +7,9 @@ const ProfileImage = imgModel.ProfileImage;
 
 exports.signupUser = async (req, res) => {
   try {
-    const checkEmail = await User.findOne({ email: req.body.email });
+    const isEmailExist = await User.findOne({ email: req.body.email });
 
-    if (checkEmail) {
+    if (isEmailExist) {
       return res.status(400).json({ message: "Email already exists" });
     }
 
